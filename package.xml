@@ -33,10 +33,10 @@ http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
         </notes>
         <filelist>
             <dir name="/">
-                <dir baseinstalldir="Image" name="Color2" >
+                <dir baseinstalldir="Image" name="Image/Color2" >
                     <file name="Model.php" role="php" />
                 </dir> <!-- /Color2 -->
-                <dir baseinstalldir="Image" name="Color2\Model" >
+                <dir baseinstalldir="Image" name="Image/Color2\Model" >
                     <file name="Cmyk.php" role="php" />
                     <file name="Grayscale.php" role="php" />
                     <file name="Hex.php" role="php" />
@@ -45,7 +45,7 @@ http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
                     <file name="Named.php" role="php" />
                     <file name="WebsafeHex.php" role="php" />
                 </dir> <!-- /Color2/Model -->
-                <file baseinstalldir="Image" name="Color2.php" role="php" />
+                <file baseinstalldir="Image" name="Image/Color2.php" role="php" />
             </dir> <!-- / -->
         </filelist>
     </release>
