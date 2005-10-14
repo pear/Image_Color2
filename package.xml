@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <package version="1.0">
     <name>Image_Color2</name>
-    <summary>Color conversion and mixing for PHP5.</summary>
-    <description>PHP5 color conversion and mixing
+    <summary>Color conversion and mixing for PHP5</summary>
+    <description>PHP5 color conversion and basic mixing.
 Currently supported color models:
 * CMYK - Used in printing.
 * Grayscale - Perceptively weighted grayscale.
-* Hex - Hex RGB colors i.e. #abcdef
+* Hex - Hex RGB colors i.e. #abcdef.
 * Hsl - Used in CSS3 to define colors.
 * Hsv - Used by Photoshop and other graphics pacakges.
 * Named - RGB value for named colors like black, khaki, etc.
-* WebsafeHex - Just like Hex but rounded to websafe colors.
+* WebsafeHex - Just like Hex but rounds to websafe colors.
     </description>
     <license>PHP License</license>
     <maintainers>
@@ -28,8 +28,8 @@ Currently supported color models:
         <deps>
             <dep type="php" rel="ge" version="5.0.0" />
         </deps>
-        <notes>Made several small syntax changes to satisfy a conditional PEAR
-vote: http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
+        <notes>Made several small syntax changes to satisfy a conditional PEAR vote:
+http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
         </notes>
         <filelist>
             <dir name="/">
