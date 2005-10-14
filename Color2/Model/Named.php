@@ -209,7 +209,7 @@ class Image_Color2_Model_Named implements Image_Color2_Model {
         if (array_key_exists($name, self::$_colornames)) {
             $this->_name = $name;
         } else {
-            throw new Exception("The color '{$str}' is unknown.");
+            throw new PEAR_Exception("The color '{$str}' is unknown.");
         }
     }
 
@@ -226,7 +226,7 @@ class Image_Color2_Model_Named implements Image_Color2_Model {
 
         $name = array_search($rgb, self::$_colornames, true);
         if ($name === false) {
-            throw new Exception('There is no name for this color. ');
+            throw new PEAR_Exception('There is no name for this color. ');
         }
         return new self($name);
     }

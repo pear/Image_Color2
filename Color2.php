@@ -16,6 +16,11 @@
  */
 
 /**
+ * As a PEAR package, all exceptions are either PEAR_Exception or derived from
+ * it.
+ */
+require_once 'PEAR/Exception.php';
+/**
  * This class requires the Hex color model because it's the standard/simplest
  * way to represent an RGB values as a string.
  */
@@ -118,7 +123,7 @@ class Image_Color2 {
      *          Non-RGB arrays should include the type element to specify a
      *          color model. Strings will be interpreted as hex if they
      *          begin with a #, otherwise they'll be treated as named colors.
-     * @throws  Exception if the color cannot be loaded.
+     * @throws  PEAR_Exception if the color cannot be loaded.
      * @uses    _createModelReflectionMethod() If the color is non-RGB the
      *          function is used to construct an Image_Color2_Model for
      *          conversion.
@@ -154,7 +159,7 @@ class Image_Color2 {
             $this->_rgb = $this->_model->getRgb();
         }
         if (is_null($this->_rgb)) {
-            throw new exception('Invalid color definition.');
+            throw new PEAR_Exception('Invalid color definition.');
         }
     }
 
@@ -166,7 +171,7 @@ class Image_Color2 {
      * @param   string  $methodName Name of a static factory method on the
      *          ColorModel interface ('fromArray', 'fromString', or 'fromRgb').
      * @return  ReflectionMethod
-     * @throws  Exception if the class cannot be loaded, or it does not
+     * @throws  PEAR_Exception if the class cannot be loaded, or it does not
      *          implement the Image_Color2_Model interface.
      * @uses    Image_Color2_Model As the interface for color conversion.
      * @internal
@@ -175,17 +180,17 @@ class Image_Color2 {
     {
         $classpath = 'Image/Color2/Model/' . $type . '.php';
         if (!include_once($classpath)) {
-            throw new Exception(
+            throw new PEAR_Exception(
                 "File '{$classpath}' for $type was not found.");
         }
         $classname = 'Image_Color2_Model_' . $type;
         if (!class_exists($classname)) {
-            throw new Exception(
+            throw new PEAR_Exception(
                 "Class '{$classname}' for $type was not found.");
         }
         $reflect = new ReflectionClass($classname);
         if (!$reflect->implementsInterface('Image_Color2_Model')) {
-            throw new Exception(
+            throw new PEAR_Exception(
                 "Class '{$classname}' doesn't implement Image_Color2_Model.");
         }
         return $reflect->getMethod($methodName);
@@ -236,7 +241,7 @@ class Image_Color2 {
      * @param   string  Name of a color model. If this variable is foo then a
      *          class named Image_Color2_Model_Foo is required.
      * @return  Image_Color2
-     * @throws  Exception if the desired color model cannot be found or it
+     * @throws  PEAR_Exception if the desired color model cannot be found or it
      *          cannot convert the color.
      * @uses    _createModelReflectionMethod() The function is used to
      *          construct an Image_Color2_Model that is passed back to the
@@ -247,7 +252,7 @@ class Image_Color2 {
         $method = self::_createModelReflectionMethod($type, 'fromRgb');
         $model = $method->invoke(null, $this->_rgb);
         if (is_null($model)) {
-            throw new Exception(
+            throw new PEAR_Exception(
                 "The '{$type}' color model couldn't convert the color.");
         } else {
             return new Image_Color2($model);

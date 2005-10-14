@@ -45,7 +45,7 @@ interface Image_Color2_Model {
      *          from 0 to 255 for the Red, Green, and Blue color components
      *          followed by a 'type' => 'rgb' element.
      * @return  Image_ColorModel
-     * @throws  Exception On an error an exception maybe thrown or null
+     * @throws  PEAR_Exception On an error an exception maybe thrown or null
      *          returned, it's up to the implementation.
      * @see     getRgb()
      */
@@ -73,7 +73,7 @@ interface Image_Color2_Model {
      *          model. There may be an optional type element at the end of the
      *          array. i.e: array(0, 255, 0, 'type' => 'rgb')
      * @return  Image_ColorModel
-     * @throws  Exception On an error an exception maybe thrown or null
+     * @throws  PEAR_Exception On an error an exception maybe thrown or null
      *          returned, it's up to the implementation.
      * @see     getArray()
      */
@@ -114,7 +114,7 @@ interface Image_Color2_Model {
      *
      * @param   string $str a string in a color model dependant format.
      * @return  Image_ColorModel
-     * @throws  Exception On an error an exception maybe thrown or null
+     * @throws  PEAR_Exception On an error an exception maybe thrown or null
      *          returned, it's up to the implementation.
      * @see     getString()
      */
