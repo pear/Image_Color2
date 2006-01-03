@@ -16,6 +16,10 @@
  * @link        http://pear.php.net/package/Image_Color2
  */
 
+/**
+ * Classes that implement this should throw PEAR exceptions.
+ */
+require_once 'PEAR/Exception.php';
 
 /**
  * An interface for color model classes to allow conversion of colors to and
