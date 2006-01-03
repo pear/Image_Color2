@@ -13,7 +13,6 @@ if (!defined('PHPUnit2_MAIN_METHOD')) {
 
 require_once 'PHPUnit2/Framework/TestSuite.php';
 require_once 'PHPUnit2/TextUI/TestRunner.php';
-require_once 'PHPUnit2/HtmlUI/TestRunner.php';
 
 set_include_path(realpath('../') . PATH_SEPARATOR . get_include_path());
 
@@ -24,11 +23,7 @@ require_once 'Tests/Model/AllTests.php';
 
 class Image_Color2_Tests_AllTests {
     public static function main() {
-        if (php_sapi_name() == 'cli') {
-            PHPUnit2_TextUI_TestRunner::run(self::suite());
-        } else {
-            PHPUnit2_HtmlUI_TestRunner::run(self::suite());
-        }
+        PHPUnit2_TextUI_TestRunner::run(self::suite());
     }
 
     public static function suite() {
