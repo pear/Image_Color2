@@ -12,7 +12,7 @@ Currently supported color models:
 * Named - RGB value for named colors like black, khaki, etc.
 * WebsafeHex - Just like Hex but rounds to websafe colors.
     </description>
-    <license>PHP License</license>
+    <license>LGPL</license>
     <maintainers>
         <maintainer>
             <user>drewish</user>
@@ -22,21 +22,20 @@ Currently supported color models:
         </maintainer>
     </maintainers>
     <release>
-        <version>0.1.3</version>
-        <date>2005-10-01</date>
+        <version>0.1.4</version>
+        <date>2006-01-02</date>
         <state>alpha</state>
         <deps>
             <dep type="php" rel="ge" version="5.0.0" />
         </deps>
-        <notes>Made several small syntax changes to satisfy a conditional PEAR vote:
-http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
-        </notes>
+        <notes>* Fixed bug #6395, a typo/bug in the package files.
+* Corrected the license in the package.xml file.</notes>
         <filelist>
             <dir name="/">
-                <dir baseinstalldir="Image" name="Image/Color2" >
+                <dir name="Image/Color2" >
                     <file name="Model.php" role="php" />
                 </dir> <!-- /Color2 -->
-                <dir baseinstalldir="Image" name="Image/Color2\Model" >
+                <dir name="Image/Color2/Model" >
                     <file name="Cmyk.php" role="php" />
                     <file name="Grayscale.php" role="php" />
                     <file name="Hex.php" role="php" />
@@ -45,11 +44,22 @@ http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
                     <file name="Named.php" role="php" />
                     <file name="WebsafeHex.php" role="php" />
                 </dir> <!-- /Color2/Model -->
-                <file baseinstalldir="Image" name="Image/Color2.php" role="php" />
+                <file name="Image/Color2.php" role="php" />
             </dir> <!-- / -->
         </filelist>
     </release>
     <changelog>
+        <release>
+            <version>0.1.3</version>
+            <date>2005-10-01</date>
+            <state>alpha</state>
+            <deps>
+                <dep type="php" rel="ge" version="5.0.0" />
+            </deps>
+            <notes>Made several small syntax changes to satisfy a conditional PEAR vote:
+    http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
+            </notes>
+        </release>
         <release>
             <version>0.1.2</version>
             <date>2005-09-22</date>
