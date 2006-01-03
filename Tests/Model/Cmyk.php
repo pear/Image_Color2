@@ -16,21 +16,21 @@ class Image_Color2_Tests_Model_Cmyk extends PHPUnit2_Framework_TestCase {
         $expected = '20%, 0%, 100%, 0%';
         $model = Image_Color2_Model_Cmyk::fromRgb(array(204, 255, 0));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getString());
     }
     function testFromRgb_9900CC() {
         $expected = '25%, 100%, 0%, 20%';
         $model = Image_Color2_Model_Cmyk::fromRgb(array(153, 0, 204));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getString());
     }
     function testFromRgb_FF9933() {
         $expected = '0%, 40%, 80%, 0%';
         $model = Image_Color2_Model_Cmyk::fromRgb(array(255, 153, 51));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getString());
     }
 
@@ -39,14 +39,14 @@ class Image_Color2_Tests_Model_Cmyk extends PHPUnit2_Framework_TestCase {
         $expected = array(0.99, 0.10, 0.25, 0.50, 'type'=>'cmyk');
         $model = Image_Color2_Model_Cmyk::fromArray(array(.99, .1, .25, .5));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getArray());
     }
     function testFromArray_Black() {
         $expected = array(.0, .0, .0, 1.0, 'type'=>'cmyk');
         $model = Image_Color2_Model_Cmyk::fromArray(array(.99, .1, .25, 1));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getArray());
     }
 
@@ -55,28 +55,28 @@ class Image_Color2_Tests_Model_Cmyk extends PHPUnit2_Framework_TestCase {
         $expected = '0%, 0%, 0%, 100%';
         $model = Image_Color2_Model_Cmyk::fromString('0% 33% 80% 100%');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getString());
     }
     function testFromString_Percent_NotBlack() {
         $expected = '100%, 33%, 80%, 0%';
         $model = Image_Color2_Model_Cmyk::fromString($expected);
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getString());
     }
     function testFromString_Floats_Black() {
         $expected = '0%, 0%, 0%, 100%';
         $model = Image_Color2_Model_Cmyk::fromString('0% 33% 80% 100%');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getString());
     }
     function testFromString_Floats_NotBlack() {
         $expected = '100%, 33%, 80%, 0%';
         $model = Image_Color2_Model_Cmyk::fromString('1 .33 .8 0');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Cmyk, $model);
+        $this->assertType('Image_Color2_Model_Cmyk', $model);
         $this->assertEquals($expected, $model->getString());
     }
 

@@ -14,19 +14,19 @@ class Image_Color2_Tests_Model_Grayscale extends PHPUnit2_Framework_TestCase {
     function testFromRgb_Black() {
         $model = Image_Color2_Model_Grayscale::fromRgb(array(0, 0, 0));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('0%', $model->getString());
     }
     function testFromRgb_Color() {
         $model = Image_Color2_Model_Grayscale::fromRgb(array(171, 205, 239));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('77.86%', $model->getString());
     }
     function testFromRgb_Gray() {
         $model = Image_Color2_Model_Grayscale::fromRgb(array(128, 128, 128));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('50.2%', $model->getString());
     }
 
@@ -34,7 +34,7 @@ class Image_Color2_Tests_Model_Grayscale extends PHPUnit2_Framework_TestCase {
     function testFromArray_Float() {
         $model = Image_Color2_Model_Grayscale::fromArray(array(0.1235));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('12.35%', $model->getString());
     }
 
@@ -42,50 +42,50 @@ class Image_Color2_Tests_Model_Grayscale extends PHPUnit2_Framework_TestCase {
     function testFromString_Float_TooSmall() {
         $model = Image_Color2_Model_Grayscale::fromString('-1');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('0%', $model->getString());
     }
     function testFromString_Float_TooBig() {
         $model = Image_Color2_Model_Grayscale::fromString('1.1');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('100%', $model->getString());
     }
     function testFromString_Float_White() {
         $model = Image_Color2_Model_Grayscale::fromString('1');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('100%', $model->getString());
     }
     function testFromString_Float_75Gray() {
         $model = Image_Color2_Model_Grayscale::fromString('0.75');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('75%', $model->getString());
     }
     function testFromString_Float_Black() {
         $model = Image_Color2_Model_Grayscale::fromString('.0');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('0%', $model->getString());
     }
 
     function testFromString_Percent_White() {
         $model = Image_Color2_Model_Grayscale::fromString('101%');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('100%', $model->getString());
     }
     function testFromString_Percent_75Gray() {
         $model = Image_Color2_Model_Grayscale::fromString('75%');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('75%', $model->getString());
     }
     function testFromString_Percent_Black() {
         $model = Image_Color2_Model_Grayscale::fromString('-1%');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType(Image_Color2_Model_Grayscale, $model);
+        $this->assertType('Image_Color2_Model_Grayscale', $model);
         $this->assertEquals('0%', $model->getString());
     }
 
