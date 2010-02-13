@@ -178,6 +178,7 @@ class Image_Color2 {
      */
     protected static function _createModelReflectionMethod($type, $methodName)
     {
+        $type = ucfirst($type);
         $classpath = 'Image/Color2/Model/' . $type . '.php';
         if (!include_once($classpath)) {
             throw new PEAR_Exception(
