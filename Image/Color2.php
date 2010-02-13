@@ -6,13 +6,13 @@
  *
  * PHP version 5
  *
- * @category    Image
- * @package     Image_Color2
- * @author      andrew morton <drewish@katherinehouse.com>
- * @copyright   2005
- * @license     http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @version     $Id$
- * @link        http://pear.php.net/package/Image_Color2
+ * @category  Image
+ * @package   Image_Color2
+ * @author    andrew morton <drewish@katherinehouse.com>
+ * @copyright 2005 Andrew Morton
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @version   SVN: $Id$
+ * @link      http://pear.php.net/package/Image_Color2
  */
 
 /**
@@ -71,36 +71,37 @@ require_once 'Image/Color2/Model/Named.php';
  * A large portion of the code for this package was derived from the work of
  * Jason Lotito and the other contributors to Image_Color.
  *
- * @category    Image
- * @package     Image_Color2
- * @author      andrew morton <drewish@katherinehouse.com>
- * @copyright   2005
- * @license     http://opensource.org/licenses/lgpl-license.php
- *              GNU Lesser General Public License, Version 2.1
- * @version     Release: 0.1.2
- * @link        http://pear.php.net/package/Image_Color2
- * @see         Image_Color
- * @todo        Figure out a clean way to support alpha channels. This class
- *              will preserve them but as soon as you call a color model for
- *              conversion they'll be discarded. I think this class will need
- *              to maintain a separate variable for the alpha channel it really
- *              seems independent of the color model. 50% red would be the same
- *              no mater how you represent it.
+ * @category  Image
+ * @package   Image_Color2
+ * @author    andrew morton <drewish@katherinehouse.com>
+ * @copyright 2005 Andrew Mortin
+ * @license   http://opensource.org/licenses/lgpl-license.php
+ *            GNU Lesser General Public License, Version 2.1
+ * @version   Release: 0.1.2
+ * @link      http://pear.php.net/package/Image_Color2
+ * @see       Image_Color
+ * @todo      Figure out a clean way to support alpha channels. This class
+ *            will preserve them but as soon as you call a color model for
+ *            conversion they'll be discarded. I think this class will need
+ *            to maintain a separate variable for the alpha channel it really
+ *            seems independent of the color model. 50% red would be the same
+ *            no mater how you represent it.
  */
-class Image_Color2 {
+class Image_Color2
+{
     /**
      * RGB value of the color. After it's assigned by the constructor it should
      * never be null.
      * @var array
      */
-    protected $_rgb;
+    protected $rgb;
     /**
      * Color model used to read a non-RGB color. This is assigned by the
      * constructor. If the source color is RGB no color model is needed so this
      * will be null.
      * @var Image_Color2_Model
      */
-    protected $_model = null;
+    protected $model = null;
 
     /**
      * Construct a color from a string, array, or an instance of
@@ -119,12 +120,13 @@ class Image_Color2 {
      * print $black->getHex();  \/\/ '#000000'
      * </code>
      *
-     * @param   array|string|Image_Color2_Model $src specifying a color.
+     * @param array|string|Image_Color2_Model $src specifying a color.
      *          Non-RGB arrays should include the type element to specify a
      *          color model. Strings will be interpreted as hex if they
      *          begin with a #, otherwise they'll be treated as named colors.
+     *
      * @throws  PEAR_Exception if the color cannot be loaded.
-     * @uses    _createModelReflectionMethod() If the color is non-RGB the
+     * @uses    createModelReflectionMethod() If the color is non-RGB the
      *          function is used to construct an Image_Color2_Model for
      *          conversion.
      */
@@ -138,27 +140,27 @@ class Image_Color2 {
 
             if (!$type || $type == 'Rgb') {
                 $src['type'] = 'rgb';
-                $this->_model = null;
-                $this->_rgb = $src;
+                $this->model = null;
+                $this->rgb = $src;
             } else {
-                $method = self::_createModelReflectionMethod($type, 'fromArray');
-                $this->_model = $method->invoke(null, $src);
+                $method = self::createModelReflectionMethod($type, 'fromArray');
+                $this->model = $method->invoke(null, $src);
             }
         } else if (is_string($src)) {
             if ('#' == substr($src, 0, 1)) {
-                $this->_model = Image_Color2_Model_Hex::fromString($src);
+                $this->model = Image_Color2_Model_Hex::fromString($src);
             } else {
-                $this->_model = Image_Color2_Model_Named::fromString($src);
+                $this->model = Image_Color2_Model_Named::fromString($src);
             }
         } else if ($src instanceof Image_Color2_Model) {
-            $this->_model = $src;
+            $this->model = $src;
         }
 
         // at this point we either have a model, an rgb value, or a problem.
-        if (!is_null($this->_model)) {
-            $this->_rgb = $this->_model->getRgb();
+        if (!is_null($this->model)) {
+            $this->rgb = $this->model->getRgb();
         }
-        if (is_null($this->_rgb)) {
+        if (is_null($this->rgb)) {
             throw new PEAR_Exception('Invalid color definition.');
         }
     }
@@ -166,21 +168,23 @@ class Image_Color2 {
     /**
      * Return a ReflectionMethod of a Image_Color2_Model implementation found in
      * the Image/Color2/Model directory.
-     * @param   string  $type   Name of a ColorModel implementation (i.e. for
-     *          Image_Color2_Model_Hsv this would be 'hsv').
-     * @param   string  $methodName Name of a static factory method on the
+     *
+     * @param string $type       Name of a ColorModel implementation (i.e. for
+     *                           Image_Color2_Model_Hsv this would be 'hsv').
+     * @param string $methodName Name of a static factory method on the
      *          ColorModel interface ('fromArray', 'fromString', or 'fromRgb').
+     *
      * @return  ReflectionMethod
      * @throws  PEAR_Exception if the class cannot be loaded, or it does not
      *          implement the Image_Color2_Model interface.
      * @uses    Image_Color2_Model As the interface for color conversion.
      * @internal
      */
-    protected static function _createModelReflectionMethod($type, $methodName)
+    protected static function createModelReflectionMethod($type, $methodName)
     {
         $type = ucfirst($type);
         $classpath = 'Image/Color2/Model/' . $type . '.php';
-        if (!include_once($classpath)) {
+        if (!include_once $classpath) {
             throw new PEAR_Exception(
                 "File '{$classpath}' for $type was not found.");
         }
@@ -206,9 +210,11 @@ class Image_Color2 {
      * $color = Image_Color2::average($red, $blue);
      * print $color->convertTo('named')->getString(); \/\/ 'purple'
      * </code>
-     * @param   Image_Color2 $left
-     * @param   Image_Color2 $right
-     * @return  Image_Color2
+     *
+     * @param Image_Color2 $left  Left color
+     * @param Image_Color2 $right Right color
+     *
+     * @return Image_Color2
      */
     public static function average(Image_Color2 $left, Image_Color2 $right)
     {
@@ -238,20 +244,21 @@ class Image_Color2 {
      * $hsv = $blue->convertTo('hsv');
      * print $hsv->getString(); \/\/ '240 100% 100%'
      * </code>
-
-     * @param   string  Name of a color model. If this variable is foo then a
-     *          class named Image_Color2_Model_Foo is required.
+     *
+     * @param string $type Name of a color model. If this variable is foo then a
+     *                     class named Image_Color2_Model_Foo is required.
+     *
      * @return  Image_Color2
      * @throws  PEAR_Exception if the desired color model cannot be found or it
      *          cannot convert the color.
-     * @uses    _createModelReflectionMethod() The function is used to
+     * @uses    createModelReflectionMethod() The function is used to
      *          construct an Image_Color2_Model that is passed back to the
      *          constructor.
      */
     public function convertTo($type)
     {
-        $method = self::_createModelReflectionMethod($type, 'fromRgb');
-        $model = $method->invoke(null, $this->_rgb);
+        $method = self::createModelReflectionMethod($type, 'fromRgb');
+        $model = $method->invoke(null, $this->rgb);
         if (is_null($model)) {
             throw new PEAR_Exception(
                 "The '{$type}' color model couldn't convert the color.");
@@ -275,19 +282,21 @@ class Image_Color2 {
      * print $color->getRgb(2);       \/\/ 255
      * print $color->getRgb('type');  \/\/ 'rgb'
      * </code>
-     * @param   mixed $index An optional index value to select an element of
-     *          the array. A null value returns the entire array.
+     *
+     * @param mixed $index An optional index value to select an element of
+     *                     the array. A null value returns the entire array.
+     *
      * @return  mixed An array if no index parameter is provided. Otherwise,
      *          provided the index is valid, a member of the array.
-     * @uses    $_rgb Returns a copy of the array.
+     * @uses    $rgb Returns a copy of the array.
      */
     public function getRgb($index = null)
     {
         // return an element if requested
         if (isset($index)) {
-            return $this->_rgb[$index];
+            return $this->rgb[$index];
         } else {
-            return $this->_rgb;
+            return $this->rgb;
         }
     }
 
@@ -307,22 +316,23 @@ class Image_Color2 {
      * print $color->getArray('type');  \/\/ 'rgb'
      * </code>
      *
-     * @param   mixed $index An optional index value to select an element of
-     *          the array. A null value returns the entire array.
+     * @param mixed $index An optional index value to select an element of
+     *                     the array. A null value returns the entire array.
+     *
      * @return  mixed An array if no index is provided. Otherwise, provided the
      *          index is valid, a member of the array.
-     * @uses    $_rgb If the color was specified as RGB.
-     * @uses    $_model If the color wasn't specified as RGB.
+     * @uses    $rgb If the color was specified as RGB.
+     * @uses    $model If the color wasn't specified as RGB.
      * @uses    Image_Color2_Model::getArray() For the color conversion if it
      *          wasn't originally RGB.
      */
     public function getArray($index = null)
     {
         // get the array
-        if (is_null($this->_model)) {
-            $ret = $this->_rgb;
+        if (is_null($this->model)) {
+            $ret = $this->rgb;
         } else {
-            $ret = $this->_model->getArray();
+            $ret = $this->model->getArray();
         }
 
         // return an element if requested
@@ -353,7 +363,7 @@ class Image_Color2 {
      */
     public function getHex()
     {
-        return Image_Color2_Model_Hex::fromRgb($this->_rgb)->getString();
+        return Image_Color2_Model_Hex::fromRgb($this->rgb)->getString();
     }
 
     /**
@@ -379,10 +389,10 @@ class Image_Color2 {
      */
     public function getString()
     {
-        if (is_null($this->_model)) {
+        if (is_null($this->model)) {
             return $this->getHex();
         } else {
-            return $this->_model->getString();
+            return $this->model->getString();
         }
     }
 }

@@ -7,13 +7,13 @@
  *
  * PHP version 5
  *
- * @category    Image
- * @package     Image_Color2
- * @author      andrew morton <drewish@katherinehouse.com>
- * @copyright   2005
- * @license     http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @version     $Id$
- * @link        http://pear.php.net/package/Image_Color2
+ * @category  Image
+ * @package   Image_Color2
+ * @author    andrew morton <drewish@katherinehouse.com>
+ * @copyright 2005 Andrew Morton
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @version   SVN: $Id$
+ * @link      http://pear.php.net/package/Image_Color2
  */
 
 /**
@@ -26,13 +26,15 @@ require_once 'PEAR/Exception.php';
  * from RGB. This class should be imutable, meaning that once it's constructed
  * the value is not changed.
  *
- * @category    Image
- * @package     Image_Color2
- * @author      andrew morton <drewish@katherinehouse.com>
- * @copyright   2005
- * @license     http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @category  Image
+ * @package   Image_Color2
+ * @author    Andrew Morton <drewish@katherinehouse.com>
+ * @copyright 2005 Andrew Morton
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      http://pear.php.net/package/Image_Color2
  */
-interface Image_Color2_Model {
+interface Image_Color2_Model
+{
     /**
      * Create an Image_Color2_Model from an RGB array.
      *
@@ -45,9 +47,10 @@ interface Image_Color2_Model {
      * ignored as the alpha channel is a responsibility of the Image_Color2
      * class.}}
      *
-     * @param   array $rgb A PEAR style RGB array containing three integers
-     *          from 0 to 255 for the Red, Green, and Blue color components
-     *          followed by a 'type' => 'rgb' element.
+     * @param array $rgb A PEAR style RGB array containing three integers
+     *                   from 0 to 255 for the Red, Green, and Blue color components
+     *                   followed by a 'type' => 'rgb' element.
+     *
      * @return  Image_ColorModel
      * @throws  PEAR_Exception On an error an exception maybe thrown or null
      *          returned, it's up to the implementation.
@@ -73,9 +76,10 @@ interface Image_Color2_Model {
      * a percent sign (%) it will be divided by 100 and then treated as a
      * zero to one floating point value.
      *
-     * @param   array $array The values and order are specific to each color
-     *          model. There may be an optional type element at the end of the
-     *          array. i.e: array(0, 255, 0, 'type' => 'rgb')
+     * @param array $array The values and order are specific to each color
+     *                     model. There may be an optional type element at the end
+     *                     of the array. i.e: array(0, 255, 0, 'type' => 'rgb')
+     *
      * @return  Image_ColorModel
      * @throws  PEAR_Exception On an error an exception maybe thrown or null
      *          returned, it's up to the implementation.
@@ -116,7 +120,8 @@ interface Image_Color2_Model {
      * HSL: '135, 100%, 40%' or '135 1.0 0.4'
      * </pre>
      *
-     * @param   string $str a string in a color model dependant format.
+     * @param string $str a string in a color model dependant format.
+     *
      * @return  Image_ColorModel
      * @throws  PEAR_Exception On an error an exception maybe thrown or null
      *          returned, it's up to the implementation.
