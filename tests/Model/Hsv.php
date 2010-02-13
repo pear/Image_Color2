@@ -7,10 +7,10 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit2/Framework/TestCase.php';
+require_once 'PHPUnit/Framework.php';
 require_once 'Image/Color2/Model/Hsv.php';
 
-class Image_Color2_Tests_Model_Hsv extends PHPUnit2_Framework_TestCase {
+class Image_Color2_Tests_Model_Hsv extends PHPUnit_Framework_TestCase {
     function testFromRgb_ProperType() {
         $model = Image_Color2_Model_Hsv::fromRgb(array(171, 205, 239));
         $this->assertTrue($model instanceof Image_Color2_Model);

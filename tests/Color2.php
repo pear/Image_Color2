@@ -9,13 +9,13 @@
 
 define('COLOR2_BASEDIR', realpath(dirname(__FILE__) . '/..'));
 
-require_once 'PHPUnit2/Framework/TestCase.php';
+require_once 'PHPUnit/Framework.php';
 require_once 'Image/Color2.php';
 require_once 'Image/Color2/Model/Hex.php';
 require_once 'Image/Color2/Model/Hsv.php';
 require_once 'Image/Color2/Model/Named.php';
 
-class Image_Color2_Tests_Color2 extends PHPUnit2_Framework_TestCase {
+class Image_Color2_Tests_Color2 extends PHPUnit_Framework_TestCase {
     function testConstruct_FromArray_RgbWithoutType() {
         $color = new Image_Color2(array(0,0,0));
         $this->assertNotNull($color);

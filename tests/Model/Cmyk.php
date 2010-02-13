@@ -8,10 +8,10 @@
  * @link        http://www.december.com/html/spec/colorsafecodes.html
  */
 
-require_once 'PHPUnit2/Framework/TestCase.php';
+require_once 'PHPUnit/Framework.php';
 require_once 'Image/Color2/Model/Cmyk.php';
 
-class Image_Color2_Tests_Model_Cmyk extends PHPUnit2_Framework_TestCase {
+class Image_Color2_Tests_Model_Cmyk extends PHPUnit_Framework_TestCase {
     function testFromRgb_CCFF00() {
         $expected = '20%, 0%, 100%, 0%';
         $model = Image_Color2_Model_Cmyk::fromRgb(array(204, 255, 0));
