@@ -43,11 +43,14 @@ class Image_Color2_Tests_Color2 extends PHPUnit_Framework_TestCase {
         $this->assertEquals(array(173, 206, 240, 'type'=>'rgb'), $color->getRgb());
     }
     function testConstruct_FromArray_InvalidType() {
+        $old = error_reporting(error_reporting()^E_WARNING);
         try {
             $color = new Image_Color2(array(1, 'type'=>'badtype'));
         } catch (PEAR_Exception $ex) {
+            error_reporting($old);
             return;
         }
+        error_reporting($old);
         $this->fail('an exception should have been thrown.');
     }
 
