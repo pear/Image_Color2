@@ -19,9 +19,9 @@ Currently supported color models:
   <active>yes</active>
  </lead>
  <date>2010-09-20</date>
- <time>09:53:08</time>
+ <time>10:01:10</time>
  <version>
-  <release>0.1.4</release>
+  <release>0.1.5</release>
   <api>0.1.4</api>
  </version>
  <stability>
@@ -157,6 +157,23 @@ http://pear.php.net/pepr/pepr-vote-show.php?id=297&amp;handle=justinpatrin
   <release>
    <version>
     <release>0.1.4</release>
+    <api>0.1.4</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2010-09-20</date>
+   <license uri="http://www.gnu.org/copyleft/lesser.html">LGPL</license>
+   <notes>
+QA release
+Package 2.0
+Bug #6395 	install directory
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.5</release>
     <api>0.1.4</api>
    </version>
    <stability>
