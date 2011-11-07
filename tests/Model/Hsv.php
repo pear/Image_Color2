@@ -7,14 +7,14 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Image/Color2/Model/Hsv.php';
 
 class Image_Color2_Tests_Model_Hsv extends PHPUnit_Framework_TestCase {
     function testFromRgb_ProperType() {
         $model = Image_Color2_Model_Hsv::fromRgb(array(171, 205, 239));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsv', $model);
+        $this->assertSame('Image_Color2_Model_Hsv', get_class($model));
     }
 
     function testFromRgb_Blueish() {
@@ -51,7 +51,7 @@ class Image_Color2_Tests_Model_Hsv extends PHPUnit_Framework_TestCase {
     function testFromArray() {
         $model = Image_Color2_Model_Hsv::fromArray(array(210, 0.28, 0.94));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsv', $model);
+        $this->assertSame('Image_Color2_Model_Hsv', get_class($model));
         $this->assertEquals('210, 28%, 94%', $model->getString());
     }
     function testFromArray_Gray() {
@@ -70,13 +70,13 @@ class Image_Color2_Tests_Model_Hsv extends PHPUnit_Framework_TestCase {
     function testFromString_Percents() {
         $model = Image_Color2_Model_Hsv::fromString('210, 2%, 9%');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsv', $model);
+        $this->assertSame('Image_Color2_Model_Hsv', get_class($model));
         $this->assertEquals('210, 2%, 9%', $model->getString());
     }
     function testFromString_Floats() {
         $model = Image_Color2_Model_Hsv::fromString('210, .02, .09');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsv', $model);
+        $this->assertSame('Image_Color2_Model_Hsv', get_class($model));
         $this->assertEquals('210, 2%, 9%', $model->getString());
     }
 

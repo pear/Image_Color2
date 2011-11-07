@@ -8,15 +8,14 @@
  * @link        http://www.december.com/html/spec/colorsafecodes.html
  */
 
-require_once 'PHPUnit/Framework.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Image/Color2/Model/Hsl.php';
 
 class Image_Color2_Tests_Model_Hsl extends PHPUnit_Framework_TestCase {
     function testFromRgb() {
         $model = Image_Color2_Model_Hsl::fromRgb(array(128, 255, 128));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsl', $model);
-
+        $this->assertSame('Image_Color2_Model_Hsl', get_class($model));
         $expected = '120, 50%, 75%';
         $this->assertEquals($expected, $model->getString());
     }
@@ -24,7 +23,7 @@ class Image_Color2_Tests_Model_Hsl extends PHPUnit_Framework_TestCase {
     function testFromArray() {
         $model = Image_Color2_Model_Hsl::fromArray(array(240, .50, .25));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsl', $model);
+        $this->assertSame('Image_Color2_Model_Hsl', get_class($model));
 
         $expected = array(240, .50, .25, 'type'=>'hsl');
         $this->assertEquals($expected, $model->getArray());
@@ -34,14 +33,14 @@ class Image_Color2_Tests_Model_Hsl extends PHPUnit_Framework_TestCase {
         $expected = '0, 0%, 0%';
         $model = Image_Color2_Model_Hsl::fromString($expected);
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsl', $model);
+        $this->assertSame('Image_Color2_Model_Hsl', get_class($model));
         $this->assertEquals($expected, $model->getString());
     }
     function testFromString_Colored() {
         $expected = '210, 20%, 90%';
         $model = Image_Color2_Model_Hsl::fromString($expected);
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_Hsl', $model);
+        $this->assertSame('Image_Color2_Model_Hsl', get_class($model));
         $this->assertEquals($expected, $model->getString());
     }
 

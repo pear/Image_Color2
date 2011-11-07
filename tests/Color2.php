@@ -9,7 +9,7 @@
 
 define('COLOR2_BASEDIR', realpath(dirname(__FILE__) . '/..'));
 
-require_once 'PHPUnit/Framework.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Image/Color2.php';
 require_once 'Image/Color2/Model/Hex.php';
 require_once 'Image/Color2/Model/Hsv.php';
@@ -97,14 +97,14 @@ class Image_Color2_Tests_Color2 extends PHPUnit_Framework_TestCase {
     function testGetHex() {
         $color = new Image_Color2('white');
         $result = $color->getHex();
-        $this->assertType('string', $result);
+        $this->assertInternalType('string', $result);
         $this->assertEquals('#ffffff', $result);
     }
 
     function testGetRgb() {
         $color = new Image_Color2(array(0,128,255));
         $result = $color->getRgb();
-        $this->assertType('array', $result);
+        $this->assertInternalType('array', $result);
         $this->assertEquals(array(0,128,255,'type'=>'rgb'), $result);
     }
     function testGetRgb_UseIndex() {
@@ -123,19 +123,19 @@ class Image_Color2_Tests_Color2 extends PHPUnit_Framework_TestCase {
     function testGetArray_Rgb() {
         $color = new Image_Color2(array(0,128,255));
         $result = $color->getArray();
-        $this->assertType('array', $result);
+        $this->assertInternalType('array', $result);
         $this->assertEquals(array(0,128,255,'type'=>'rgb'), $result);
     }
     function testGetArray_Hex() {
         $color = new Image_Color2(array(0x0, 0x77, 0xFF,'type'=>'hex'));
         $result = $color->getArray();
-        $this->assertType('array', $result);
+        $this->assertInternalType('array', $result);
         $this->assertEquals(array(0x0, 0x77, 0xFF,'type'=>'rgb'), $result);
     }
     function testGetArray_Hsv() {
         $color = new Image_Color2(array(210, 0.28, 0.94, 'type'=>'hsv'));
         $result = $color->getArray();
-        $this->assertType('array', $result);
+        $this->assertInternalType('array', $result);
         $this->assertEquals(array(210, 0.28, 0.94, 'type'=>'hsv'), $result);
     }
     function testGetArray_UseIndex() {
@@ -154,14 +154,14 @@ class Image_Color2_Tests_Color2 extends PHPUnit_Framework_TestCase {
     function testConvertTo_NamedToHex() {
         $color = new Image_Color2('orange');
         $color2 = $color->convertTo('hex');
-        $this->assertType('Image_Color2', $color2);
+        $this->assertSame('Image_Color2', get_class($color2));
         $result = $color2->getString();
         $this->assertEquals('#ffa500', $result);
     }
     function testConvertTo_RgbToNamed() {
         $color = new Image_Color2(array(128,128,128));
         $color2 = $color->convertTo('named');
-        $this->assertType('Image_Color2', $color2);
+        $this->assertSame('Image_Color2', get_class($color2));
         $result = $color2->getString();
         $this->assertEquals('gray', $result);
     }
@@ -188,7 +188,7 @@ class Image_Color2_Tests_Color2 extends PHPUnit_Framework_TestCase {
         $red = new Image_Color2('red');
         $blue = new Image_Color2('blue');
         $result = Image_Color2::average($red, $blue);
-        $this->assertType('Image_Color2', $result);
+        $this->assertSame('Image_Color2', get_class($result));
         $this->assertEquals('#800080', $result->getHex());
         $this->assertEquals('purple', $result->convertTo('named')->getString());
     }
@@ -197,10 +197,8 @@ class Image_Color2_Tests_Color2 extends PHPUnit_Framework_TestCase {
         $red = new Image_Color2(array(255,0,0,255));
         $blue = new Image_Color2(array(0,0,255,0));
         $result = Image_Color2::average($red, $blue);
-        $this->assertType('Image_Color2', $result);
+        $this->assertSame('Image_Color2', get_class($result));
         $this->assertEquals(array(128,0,128,128,'type'=>'rgb'), $result->getArray());
     }
 
 }
-
-?>

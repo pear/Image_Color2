@@ -7,34 +7,34 @@
  * @copyright 2005
  */
 
-require_once 'PHPUnit/Framework.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Image/Color2/Model/WebsafeHex.php';
 
 class Image_Color2_Tests_Model_WebsafeHex extends PHPUnit_Framework_TestCase {
     function testFromRgb() {
         $model = Image_Color2_Model_WebsafeHex::fromRgb(array(171, 205, 239));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_WebsafeHex', $model);
+        $this->assertSame('Image_Color2_Model_WebsafeHex', get_class($model));
         $this->assertEquals('#99ccff', $model->getString());
     }
 
     function testFromArray() {
         $model = Image_Color2_Model_WebsafeHex::fromArray(array('AB','cd','EF'));
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_WebsafeHex', $model);
+        $this->assertSame('Image_Color2_Model_WebsafeHex', get_class($model));
         $this->assertEquals('#99ccff', $model->getString());
     }
 
     function testFromString() {
         $model = Image_Color2_Model_WebsafeHex::fromString('#abCDef');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_WebsafeHex', $model);
+        $this->assertSame('Image_Color2_Model_WebsafeHex', get_class($model));
         $this->assertEquals('#99ccff', $model->getString());
     }
     function testFromString_Black() {
         $model = Image_Color2_Model_WebsafeHex::fromString('#000000');
         $this->assertTrue($model instanceof Image_Color2_Model);
-        $this->assertType('Image_Color2_Model_WebsafeHex', $model);
+        $this->assertSame('Image_Color2_Model_WebsafeHex', get_class($model));
         $this->assertEquals('#000000', $model->getString());
     }
 

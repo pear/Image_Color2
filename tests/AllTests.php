@@ -11,7 +11,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Image_Color2_Tests_AllTests::main');
 }
 
-require_once 'PHPUnit/Framework.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 
 set_include_path(realpath('../') . PATH_SEPARATOR . get_include_path());
 
