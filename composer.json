@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Image_Color2": "./"
+            "Image": "./"
         }
     },
     "description": "More info available on: http://pear.php.net/package/Image_Color2",
