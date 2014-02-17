@@ -1,0 +1,31 @@
+{
+    "authors": [
+        {
+            "email": "drewish@katherinehouse.com",
+            "name": "andrew morton",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Image_Color2": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/Image_Color2",
+    "include-path": [
+        "./"
+    ],
+    "license": "LGPL",
+    "name": "pear/image_color2",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Image_Color2",
+        "source": "https://github.com/pear/Image_Color2"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
