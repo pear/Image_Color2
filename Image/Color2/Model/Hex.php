@@ -112,9 +112,9 @@ class Image_Color2_Model_Hex implements Image_Color2_Model {
         if (strlen($color) == 3) {
             // short #abc form
                return new self(
-                hexdec($color{0} . $color{0}),
-                hexdec($color{1} . $color{1}),
-                hexdec($color{2} . $color{2})
+                hexdec($color[0] . $color[0]),
+                hexdec($color[1] . $color[1]),
+                hexdec($color[2] . $color[2])
             );
         } else {
             // long #aabbcc form
